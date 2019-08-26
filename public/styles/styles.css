@@ -1,3 +1,25 @@
-body{
-  margin: 0;
+/* Set the Web Page Height to Be 100% So Our Image and Content Spans Properly */
+
+body, html {
+  height: 100%;
+}
+
+/* Site Background Image */
+
+.bg {
+  /* The Image */
+  background: url("https://mir-s3-cdn-cf.behance.net/project_modules/disp/1d5d6a18137045.5603dc47e8649.gif");
+  /* Full height */
+  height: 80%;
+  filter: brightness(50%);
+  /* Center and Scale Image */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* Do Flex */
+  display: flex;
+  /* Align Items Center */
+  align-items: center;
+  /* Align Content Center */
+  justify-content: center;
 }
