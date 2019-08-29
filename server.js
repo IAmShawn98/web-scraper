@@ -7,9 +7,10 @@ const mongoose = require('mongoose');
 const cheerio = require('cheerio');
 const axios = require('axios');
 
-// Required Routing Paths:
+// Require All Models.
+// var db = require("./models");
 
-// This is Our Index Routing Path.
+// Required Routing Paths:
 
 // Root Route Router.
 const routeHome = require('./routes/home');
@@ -38,6 +39,21 @@ app.set('views', __dirname + '/views');
 
 // Serve Static Files From the '/public' Folder.
 app.use(express.static(path.resolve(__dirname, 'public'))); // serve static files
+
+// Specify Our MongoDB Connection String.
+mongoose.connect("mongodb://localhost/scrapeDB");
+// Save the Connection String into an instance called 'db' so we can verify it.
+var db = mongoose.connection;
+
+// Verify our 'db' connection.
+
+// If There Is An Error, Handle It.
+db.on("error", console.error.bind(console, "connection error:"));
+
+// Otherwise, open the successful connection.
+db.once("open", function () {
+  console.log("Connected to Mongoose!");
+});
 
 // Routes Are Set Here:
 

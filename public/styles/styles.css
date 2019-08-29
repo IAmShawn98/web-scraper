@@ -10,7 +10,7 @@ body, html {
   /* The Image */
   background: url("https://mir-s3-cdn-cf.behance.net/project_modules/disp/1d5d6a18137045.5603dc47e8649.gif");
   /* Full height */
-  height: 80%;
+  height: 50%;
   filter: brightness(50%);
   /* Center and Scale Image */
   background-position: center;
