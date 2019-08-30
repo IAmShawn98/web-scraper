@@ -29,8 +29,11 @@ body, html {
 /* Jumbotron Image Title and Description Text */
 
 .caption {
-  font-size: 230%;
   color: white;
+}
+
+#jumbo-describe {
+  font-size: 200%;
 }
 
 /* Alert Style Override (Not very scalable, but fine in this small project */
