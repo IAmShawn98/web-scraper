@@ -1,17 +1,18 @@
 /* Set the Web Page Height to Be 100% So Our Image and Content Spans Properly */
 
 body, html {
+  background-color: #ffffff;
+  background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   height: 100%;
 }
 
 /* Site Background Image */
 
-.bg {
-  /* The Image */
-  background: url("https://mir-s3-cdn-cf.behance.net/project_modules/disp/1d5d6a18137045.5603dc47e8649.gif");
-  /* Full height */
+.jumbotron {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://mir-s3-cdn-cf.behance.net/project_modules/disp/1d5d6a18137045.5603dc47e8649.gif");
+  font-family: "Cormorant SC";
   height: 50%;
-  filter: brightness(50%);
   /* Center and Scale Image */
   background-position: center;
   background-repeat: no-repeat;
@@ -22,4 +23,16 @@ body, html {
   align-items: center;
   /* Align Content Center */
   justify-content: center;
+}
+
+.caption {
+  color: white;
+}
+
+#jumbo-describe {
+  font-size: 230%;
+}
+
+.alert-warning {
+  background-color: #ff9800 !important;
 }
