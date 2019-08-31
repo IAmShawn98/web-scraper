@@ -16,9 +16,6 @@ var db = require("./models");
 // Root Route Router.
 const routeHome = require('./routes/home');
 
-// Route To Be Determined.
-const routeAbout = require('./routes/about');
-
 // Create New instance of 'express'.
 const app = express();
 
@@ -38,18 +35,17 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.set('views', __dirname + '/views');
 
-// Use Morgan Logger For to Log Requests.
+// Log Routing Events [MORGAN Package].
 app.use(logger("dev"));
 
 // Serve Static Files From the '/public' Folder.
-app.use(express.static(path.resolve(__dirname, 'public'))); // serve static files
+app.use(express.static(path.resolve(__dirname, 'public')));
 
 // Specify Our MongoDB Connection String.
 mongoose.connect("mongodb://localhost/scrapeDB");
-// Save the Connection String into an instance called 'db' so we can verify it.
-var connectionDB = mongoose.connection;
 
-// Verify our 'db' connection.
+// Save the Connection String Into An Instance Called 'db' So We Can Verify It.
+var connectionDB = mongoose.connection;
 
 // If There Is An Error, Handle It.
 connectionDB.on("error", console.error.bind(console, "connection error:"));
@@ -68,7 +64,6 @@ app.get('/', (req, res) => routeHome(req, res));
 
 // Route to Scrape Site.
 app.get("/scrape", function (req, res) {
-  // First, we grab the body of the html with axios
   // Grab the URL of the Site We Want to Scrape.
   axios.get("http://www.echojs.com/").then(function (response) {
     // Load URL String Into Cheerio to Make It Our Shorthand
@@ -103,6 +98,8 @@ app.get("/scrape", function (req, res) {
     res.redirect("/");
   });
 });
+
+
 
 // Start Our Server on PORT 3000.
 app.listen(process.env.PORT || PORT, () => console.log(`Express server listening on port ${process.env.PORT || PORT}!`));
