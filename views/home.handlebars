@@ -25,18 +25,31 @@
       </li>
 
       {{!-- Site Navbar [Scrape New Articles!] Button --}}
-      <button type="button" class="btn btn-danger btn-md my-2 my-sm-0 ml-3">Scrape New Articles!</button>
+      <a href="/scrape" type="button" class="btn btn-info btn-md my-2 my-sm-0 ml-3 font-weight-bold">
+        Scrape New Articles!
+      </a>
+      {{!-- Site Navbar [Clear Articles!] Button --}}
+      <a type="button" class="btn btn-danger btn-md my-2 my-sm-0 ml-3 font-weight-bold">
+        Clear Articles!
+      </a>
     </ul>
   </div>
 </nav>
 {{!-- Site Navigation [End] --}}
 
-{{!-- Site Main Background Image --}}
+{{!-- Site [Partial Alerts] --}}
+{{!-- <div style="display: none;" id="pAlertSuccess">
+  {{> alertSuccess }}
+</div> --}}
+
+{{!-- Site [Main Background Image] --}}
 <div class="jumbotron text-center">
-  <div class=" bg">
+  {{!-- Site [Jumbotron Background] --}}
+  <div class="bg">
   </div>
+  {{!-- Site [Jumbotron Background Text] --}}
   <div class="caption">
-    <h1 class="display-2">Mongo Scraper</h1>
+    <h1 class="display-2 font-weight-bold">Mongo Scraper</h1>
     <p id="jumbo-describe" class="lead">New York Times Edition</p>
   </div>
 </div>
@@ -45,3 +58,7 @@
 <div class="alert alert-warning text-white" role="alert">
   <p class="h5 text-center"><b>Uh Oh.</b> Looks Like We Don't Have Any New Articles.</p>
 </div>
+
+{{#each Article}}
+{{this.title}}
+{{/each}}

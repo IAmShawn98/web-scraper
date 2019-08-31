@@ -6,9 +6,10 @@ const helpers = require('./helpers');
 const mongoose = require('mongoose');
 const cheerio = require('cheerio');
 const axios = require('axios');
+const logger = require("morgan");
 
 // Require All Models.
-// var db = require("./models");
+var db = require("./models");
 
 // Required Routing Paths:
 
@@ -37,21 +38,24 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.set('views', __dirname + '/views');
 
+// Use Morgan Logger For to Log Requests.
+app.use(logger("dev"));
+
 // Serve Static Files From the '/public' Folder.
 app.use(express.static(path.resolve(__dirname, 'public'))); // serve static files
 
 // Specify Our MongoDB Connection String.
 mongoose.connect("mongodb://localhost/scrapeDB");
 // Save the Connection String into an instance called 'db' so we can verify it.
-var db = mongoose.connection;
+var connectionDB = mongoose.connection;
 
 // Verify our 'db' connection.
 
 // If There Is An Error, Handle It.
-db.on("error", console.error.bind(console, "connection error:"));
+connectionDB.on("error", console.error.bind(console, "connection error:"));
 
 // Otherwise, open the successful connection.
-db.once("open", function () {
+connectionDB.once("open", function () {
   console.log("Connected to Mongoose!");
 });
 
@@ -62,14 +66,21 @@ db.once("open", function () {
 // or fires up the live site for the first time.
 app.get('/', (req, res) => routeHome(req, res));
 
-app.get("/scrape", function(req, res) {
-  axios.get("http://www.theverge.com", function(error, response, html) {
-    var $ = cheerio.load(html);
-    var titlesArray = [];
+// Route to Scrape Site.
+app.get("/scrape", function (req, res) {
+  // First, we grab the body of the html with axios
+  // Grab the URL of the Site We Want to Scrape.
+  axios.get("http://www.echojs.com/").then(function (response) {
+    // Load URL String Into Cheerio to Make It Our Shorthand
+    // So That It's Easier to Call With.
+    var $ = cheerio.load(response.data);
 
-    $(".c-entry-box--compact__title").each(function(i, element) {
+    // Grab All H2s with an article.
+    $("article h2").each(function (i, element) {
+      // Save Into Empty Result Object.
       var result = {};
 
+      // Grab the Text and Href of Every Link, Saved As Properties of the 'result' Object.
       result.title = $(this)
         .children("a")
         .text();
@@ -77,41 +88,19 @@ app.get("/scrape", function(req, res) {
         .children("a")
         .attr("href");
 
-      if (result.title !== "" && result.link !== "") {
-        if (titlesArray.indexOf(result.title) == -1) {
-          titlesArray.push(result.title);
-
-          Article.count({ title: result.title }, function(err, test) {
-            if (test === 0) {
-              var entry = new Article(result);
-
-              entry.save(function(err, doc) {
-                if (err) {
-                  console.log(err);
-                } else {
-                  console.log(doc);
-                }
-              });
-            }
-          });
-        } else {
-          console.log("Article already exists.");
-        }
-      } else {
-        console.log("Not saved to DB, missing data");
-      }
+      // Create New Article Using our 'result' Object Created From Scraping.
+      db.Article.create(result)
+        .then(function (scrapeDB) {
+          // Show All Processed Scrapes In the Console.
+          console.log(scrapeDB);
+        })
+        .catch(function (err) {
+          // If There's An Error, Handle It.
+          console.log(err);
+        });
     });
+    // Redirect Back to the Root Route When Finished.
     res.redirect("/");
-  });
-});
-
-app.get("/articles-json", function (req, res) {
-  Article.find({}, function (err, doc) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(doc);
-    }
   });
 });
 

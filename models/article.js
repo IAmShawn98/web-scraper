@@ -18,7 +18,7 @@ var articleSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Comment"
     }]
-})
+});
 
 // Define and Export This Document As Schema Name 'Article'.
 var Article = mongoose.model("Article", articleSchema);
