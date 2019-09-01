@@ -7,6 +7,13 @@ const mongoose = require('mongoose');
 const cheerio = require('cheerio');
 const axios = require('axios');
 const logger = require('morgan');
+const moment = require('moment');
+const Handlebars = require("handlebars");
+const MomentHandler = require("handlebars.moment");
+
+// Initialize Moment Handlebars.
+MomentHandler.registerHelpers(Handlebars);
+console.log(moment());
 
 // Require All Models.
 var db = require("./models");
@@ -65,13 +72,13 @@ app.get('/', (req, res) => routeHome(req, res));
 // Route to Scrape Site.
 app.get("/scrape", function (req, res) {
   // Grab the URL of the Site We Want to Scrape.
-  axios.get("http://www.echojs.com/").then(function (response) {
+  axios.get("https://www.nytimes.com/section/todayspaper").then(function (response) {
     // Load URL String Into Cheerio to Make It Our Shorthand
     // So That It's Easier to Call With.
     var $ = cheerio.load(response.data);
 
     // Grab All H2s With An Article.
-    $("article h2").each(function () {
+    $(".css-l2vidh").each(function () {
       // Create An Empty Array For Later Population.
       var result = {};
 

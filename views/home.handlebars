@@ -54,6 +54,10 @@
   {{!-- Site [If the Articles Array Contains Data] --}}
   {{#if Article.length}}
   {{!-- Site [Loop Through Each Article's Title and Comment] --}}
+  {{!-- Site [Todays News] --}}
+  <div class="col-md-4 alert alert-green text-white" role="alert">
+    <p class="h5 text-center">Today, {{moment format="MMMM. D, YYYY"}}</p>
+  </div>
   {{#each Article}}
   {{!-- Site [Article Scrape Results] --}}
   <div class="row">
@@ -63,9 +67,9 @@
         <div class="card-header primary-color white-text">
           <h4 class="card-title pt-2">
             <a class="article-link text-white" href="{{this.link}}">{{this.title}}</a>
-              <a href="#" class="btn btn-success float-right font-weight-bold">
-                Save Article
-              </a>
+            <a href="#" class="btn btn-success float-right font-weight-bold">
+              Save Article
+            </a>
           </h4>
         </div>
         {{!-- Site [Article Description / Comment] --}}

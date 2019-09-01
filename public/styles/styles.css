@@ -47,6 +47,9 @@ body, html {
 .alert-primary {
   background-color: #2196F3 !important;
 }
+.alert-green {
+  background-color: #28a745 !important;
+}
 
 /* Style For Null Results Unordered List */
 
