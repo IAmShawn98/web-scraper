@@ -53,11 +53,11 @@
 <div class="container-fluid">
   {{!-- Site [If the Articles Array Contains Data] --}}
   {{#if Article.length}}
-  {{!-- Site [Loop Through Each Article's Title and Comment] --}}
   {{!-- Site [Todays News] --}}
   <div class="col-md-4 alert alert-green text-white" role="alert">
-    <p class="h5 text-center">Today, {{moment format="MMMM. D, YYYY"}}</p>
+    <p class="h5 text-center">Today, {{moment format="MMMM D, YYYY."}}</p>
   </div>
+  {{!-- Site [Loop Through Each Article's Title and Comment] --}}
   {{#each Article}}
   {{!-- Site [Article Scrape Results] --}}
   <div class="row">
