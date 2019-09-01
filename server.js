@@ -113,5 +113,16 @@ app.get("/clearAll", function (req, res) {
   res.redirect("/");
 });
 
+// Get Article Data As 'Json' Format.
+app.get("/articles-json", function (req, res) {
+  db.Article.find({}, function (err, response) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(response);
+    }
+  });
+});
+
 // Start Our Server on PORT 3000.
 app.listen(process.env.PORT || PORT, () => console.log(`Express server listening on port ${process.env.PORT || PORT}!`));
