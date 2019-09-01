@@ -53,3 +53,8 @@ body, html {
 ul {
   list-style-type: none;
 }
+
+/* Article Link Style */
+.article-link:hover {
+  text-decoration: underline;
+}

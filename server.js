@@ -70,9 +70,9 @@ app.get("/scrape", function (req, res) {
     // So That It's Easier to Call With.
     var $ = cheerio.load(response.data);
 
-    // Grab All H2s with an article.
+    // Grab All H2s With An Article.
     $("article h2").each(function () {
-      // Save Into Empty Result Object.
+      // Create An Empty Array For Later Population.
       var result = {};
 
       // Grab the Text and Href of Every Link, Saved As Properties of the 'result' Object.
