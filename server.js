@@ -6,7 +6,7 @@ const helpers = require('./helpers');
 const mongoose = require('mongoose');
 const cheerio = require('cheerio');
 const axios = require('axios');
-const logger = require('morgan'); 
+const logger = require('morgan');
 
 // Require All Models.
 var db = require("./models");
@@ -97,6 +97,20 @@ app.get("/scrape", function (req, res) {
     // Redirect Back to the Root Route When Finished.
     res.redirect("/");
   });
+});
+
+// Clear DB Router.
+app.get("/clearAll", function (req, res) {
+  db.Article.remove({}, function (err) {
+    if (err) {
+      // If There's An Error, Handle It.
+      console.log(err);
+    } else {
+      console.log("Articles Successfully Removed!");
+    }
+  });
+  // Redirect Back to the Root Route When Finished.
+  res.redirect("/");
 });
 
 // Start Our Server on PORT 3000.
