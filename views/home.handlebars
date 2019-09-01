@@ -44,7 +44,7 @@
   </div>
   {{!-- Site [Jumbotron Background Text] --}}
   <div class="caption">
-    <h1 class="display-2 font-weight-bold">Mongo Scraper</h1>
+    <h1 class="display-1 font-weight-bold">Mongo Scraper</h1>
     <p id="jumbo-describe" class="lead">New York Times Edition</p>
   </div>
 </div>
@@ -61,7 +61,9 @@
       <div class="card mb-4">
         {{!-- Site [Article Title] --}}
         <div class="card-header primary-color white-text">
-          <h4 class="card-title pt-2">{{this.title}}</h4>
+          <h4 class="card-title pt-2">
+            {{this.title}} <a href="#" class="btn btn-success float-right">Save Article</a>
+            </h4>
         </div>
         {{!-- Site [Article Description / Comment] --}}
         <div class="card-body">
