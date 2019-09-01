@@ -77,7 +77,7 @@ app.get("/scrape", function (req, res) {
     // So That It's Easier to Call With.
     var $ = cheerio.load(response.data);
 
-    // Grab All H2s With An Article.
+    // Grab All News Classes.
     $(".css-l2vidh").each(function () {
       // Create An Empty Array For Later Population.
       var result = {};
