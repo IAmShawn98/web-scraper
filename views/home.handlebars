@@ -78,5 +78,33 @@
   <div class="alert alert-warning text-white" role="alert">
     <p class="h5 text-center"><b>Uh Oh.</b> Looks Like We Don't Have Any New Articles.</p>
   </div>
+  {{!-- Site [What-Would-You-Like-To-Do?] --}}
+  <div class="row">
+    <div class="col-lg-12 col-sm-12">
+      <div class="card mb-4">
+        {{!-- Site [Article Title] --}}
+        <div class="card-header primary-color white-text text-center pb-2">
+          <h3>What Would You Like to Do?</h3>
+        </div>
+        {{!-- Site [Article Description / Comment] --}}
+        <div class="card-body">
+          <h4 class="card-title">
+            <div class="row text-center">
+              <div class="col-lg-12">
+                <ul id="linkList" class="mr-5 mt-4">
+                  <li class="mb-2">
+                    <a href="/scrape">Try Scraping New Articles</a>
+                  </li>
+                  <li>
+                    <a href="#">Go to Saved Articles</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
   {{/if}}
 </div>

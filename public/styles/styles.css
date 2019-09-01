@@ -43,3 +43,13 @@ body, html {
 .alert-warning {
   background-color: #ff9800 !important;
 }
+
+.alert-primary {
+  background-color: #2196F3 !important;
+}
+
+/* Style For Null Results Unordered List */
+
+ul {
+  list-style-type: none;
+}
