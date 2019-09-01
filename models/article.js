@@ -14,10 +14,12 @@ var articleSchema = new Schema({
         type: String,
         required: true
     },
-    comment: [{
-        type: Schema.Types.ObjectId,
-        ref: "Comment"
-    }]
+    comment: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Comment"
+        }
+    ]
 });
 
 // Define and Export This Document As Schema Name 'Article'.

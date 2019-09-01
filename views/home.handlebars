@@ -25,22 +25,17 @@
       </li>
 
       {{!-- Site Navbar [Scrape New Articles!] Button --}}
-      <a href="/scrape" type="button" class="btn btn-info btn-md my-2 my-sm-0 ml-3 font-weight-bold">
+      <a href="/scrape" id="btnScrape" type="button" class="btn btn-info btn-md my-2 my-sm-0 ml-3 font-weight-bold">
         Scrape New Articles!
       </a>
       {{!-- Site Navbar [Clear Articles!] Button --}}
-      <a type="button" class="btn btn-danger btn-md my-2 my-sm-0 ml-3 font-weight-bold">
+      <a type="button" id="btnClear" class="btn btn-danger btn-md my-2 my-sm-0 ml-3 font-weight-bold">
         Clear Articles!
       </a>
     </ul>
   </div>
 </nav>
 {{!-- Site Navigation [End] --}}
-
-{{!-- Site [Partial Alerts] --}}
-{{!-- <div style="display: none;" id="pAlertSuccess">
-  {{> alertSuccess }}
-</div> --}}
 
 {{!-- Site [Main Background Image] --}}
 <div class="jumbotron text-center">
@@ -54,11 +49,34 @@
   </div>
 </div>
 
-{{!-- Site [No New Articles] --}}
-<div class="alert alert-warning text-white" role="alert">
-  <p class="h5 text-center"><b>Uh Oh.</b> Looks Like We Don't Have Any New Articles.</p>
-</div>
+{{!-- Site [Article Scrape Population Conditions] --}}
+<div class="container-fluid">
+  {{!-- Site [If the Articles Array Contains Data] --}}
+  {{#if Article.length}}
+  {{!-- Site [Loop Through Each Article's Title and Comment] --}}
+  {{#each Article}}
+  {{!-- Site [Article Scrape Results] --}}
+  <div class="row">
+    <div class="col-lg-12 col-sm-12">
+      <div class="card mb-4">
+        {{!-- Site [Article Title] --}}
+        <div class="card-header primary-color white-text">
+          <h4 class="card-title pt-2">{{this.title}}</h4>
+        </div>
+        {{!-- Site [Article Description / Comment] --}}
+        <div class="card-body">
+          <h4 class="card-title">{{this.comment}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/each}}
 
-{{#each Article}}
-{{this.title}}
-{{/each}}
+  {{!-- Site [If The Results Array Returns Empty, Show Placeholder] --}}
+  {{else}}
+  {{!-- Site [No New Articles] --}}
+  <div class="alert alert-warning text-white" role="alert">
+    <p class="h5 text-center"><b>Uh Oh.</b> Looks Like We Don't Have Any New Articles.</p>
+  </div>
+  {{/if}}
+</div>

@@ -6,7 +6,7 @@ const helpers = require('./helpers');
 const mongoose = require('mongoose');
 const cheerio = require('cheerio');
 const axios = require('axios');
-const logger = require("morgan");
+const logger = require('morgan'); 
 
 // Require All Models.
 var db = require("./models");
@@ -14,7 +14,7 @@ var db = require("./models");
 // Required Routing Paths:
 
 // Root Route Router.
-const routeHome = require('./routes/home');
+const routeHome = require('./routes/Article');
 
 // Create New instance of 'express'.
 const app = express();
@@ -71,7 +71,7 @@ app.get("/scrape", function (req, res) {
     var $ = cheerio.load(response.data);
 
     // Grab All H2s with an article.
-    $("article h2").each(function (i, element) {
+    $("article h2").each(function () {
       // Save Into Empty Result Object.
       var result = {};
 
@@ -83,7 +83,7 @@ app.get("/scrape", function (req, res) {
         .children("a")
         .attr("href");
 
-      // Create New Article Using our 'result' Object Created From Scraping.
+      // Create New Article Using the 'result' Object Created From Scraping.
       db.Article.create(result)
         .then(function (scrapeDB) {
           // Show All Processed Scrapes In the Console.
@@ -98,8 +98,6 @@ app.get("/scrape", function (req, res) {
     res.redirect("/");
   });
 });
-
-
 
 // Start Our Server on PORT 3000.
 app.listen(process.env.PORT || PORT, () => console.log(`Express server listening on port ${process.env.PORT || PORT}!`));
