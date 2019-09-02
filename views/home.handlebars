@@ -28,18 +28,25 @@
       <a href="/scrape" id="btnScrape" type="button" class="btn btn-info btn-md my-2 my-sm-0 ml-3 font-weight-bold">
         Scrape New Articles!
       </a>
+      {{#if Article.length}}
+      {{!-- Site Navbar [View Scrapes As JSON !] Button --}}
+      <a href="/scrapej" id="btnViewJSON" type="button"
+        class="btn btn-warning btn-md my-2 my-sm-0 ml-3 font-weight-bold">
+        View Scrapes As JSON
+      </a>
       {{!-- Site Navbar [Clear Articles!] Button --}}
       <a href="/clearAll" type="button" id="btnClear" class="btn btn-danger btn-md my-2 my-sm-0 ml-3 font-weight-bold">
         Clear Articles!
       </a>
+      {{/if}}
     </ul>
   </div>
 </nav>
 {{!-- Site Navigation [End] --}}
 
-{{!-- Site [Partial Alerts] --}}	
-<div style="display: none;" id="pAlertSuccess">	
-  {{> alertProcessScrape }}	
+{{!-- Site [Partial Alerts] --}}
+<div style="display: none;" id="pAlertSuccess">
+  {{> alertProcessScrape }}
 </div>
 
 {{!-- Site [Main Background Image] --}}
@@ -71,7 +78,7 @@
         {{!-- Site [Article Title] --}}
         <div class="card-header primary-color white-text">
           <h4 class="card-title pt-2">
-            <a class="article-link text-white" href="{{this.link}}">{{this.title}}</a>
+            <a class="article-link text-white" target="_blank" href="{{this.link}}">{{this.title}}</a>
             <a href="#" class="btn btn-success float-right font-weight-bold">
               Save Article
             </a>

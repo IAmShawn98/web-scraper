@@ -121,8 +121,9 @@ app.get("/clearAll", function (req, res) {
 });
 
 // Get Article Data As 'Json' Format.
-app.get("/articles-json", function (req, res) {
+app.get("/scrapej", function (req, res) {
   db.Article.find({}, function (err, response) {
+    // If There Are Errors, Handle Them.
     if (err) {
       console.log(err);
     } else {
