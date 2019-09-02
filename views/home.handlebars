@@ -21,21 +21,23 @@
       </li>
       {{!-- Site Navbar [Saved Articles] --}}
       <li class="nav-item">
-        <a class="nav-link" href="/">Saved Articles</a>
+        <a class="nav-link" href="/saves">Saved Articles</a>
       </li>
 
       {{!-- Site Navbar [Scrape New Articles!] Button --}}
-      <a href="/scrape" id="btnScrape" type="button" class="btn btn-info btn-md my-2 my-sm-0 ml-3 font-weight-bold">
+      <a href="/scrape" id="btnScrape" type="button"
+        class="animated rubberBand btn btn-info btn-md my-2 my-sm-0 ml-3 font-weight-bold">
         Scrape New Articles!
       </a>
       {{#if Article.length}}
       {{!-- Site Navbar [View Scrapes As JSON !] Button --}}
       <a href="/scrapej" id="btnViewJSON" type="button"
-        class="btn btn-warning btn-md my-2 my-sm-0 ml-3 font-weight-bold">
+        class="animated rubberBand btn btn-warning btn-md my-2 my-sm-0 ml-3 font-weight-bold">
         View Scrapes As JSON!
       </a>
       {{!-- Site Navbar [Clear Articles!] Button --}}
-      <a href="/clearAll" type="button" id="btnClear" class="btn btn-danger btn-md my-2 my-sm-0 ml-3 font-weight-bold">
+      <a href="/clearAll" type="button" id="btnClear"
+        class="animated rubberBand btn btn-danger btn-md my-2 my-sm-0 ml-3 font-weight-bold">
         Clear Articles!
       </a>
       {{/if}}
@@ -78,7 +80,8 @@
         {{!-- Site [Article Title] --}}
         <div class="card-header primary-color white-text">
           <h4 class="card-title pt-2">
-            <a class="article-link text-white" target="_blank" href="https://www.nytimes.com/{{this.link}}">{{this.title}}</a>
+            <a class="article-link text-white" target="_blank"
+              href="https://www.nytimes.com/{{this.link}}">{{this.title}}</a>
             <a href="#" class="btn btn-success float-right font-weight-bold">
               Save Article
             </a>

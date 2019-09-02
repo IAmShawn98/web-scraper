@@ -1,0 +1,133 @@
+<!-- Site Navigation [START] -->
+<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+    <!-- Site Navbar Brand -->
+    <a class="navbar-brand" href="/">
+        <h1>Mongo Scraper</h1>
+    </a>
+    <!-- Site Collapse Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#siteNavbar"
+        aria-controls="siteNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Site Collapsible Content -->
+    <div class="collapse navbar-collapse" id="siteNavbar">
+        <!-- Site Navbar Links -->
+        <ul class="navbar-nav mr-auto">
+            {{!-- Site Navbar [Home Route] --}}
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            {{!-- Site Navbar [Saved Articles] --}}
+            <li class="nav-item active">
+                <a class="nav-link" href="/saves">Saved Articles</a>
+            </li>
+
+            {{!-- Site Navbar [Clear Articles!] Button --}}
+            <a href="/clearAll" type="button" id="btnClear"
+                class="animated rubberBand btn btn-danger btn-md my-2 my-sm-0 ml-3 font-weight-bold">
+                Clear Articles!
+            </a>
+        </ul>
+    </div>
+</nav>
+{{!-- Site Navigation [End] --}}
+
+{{!-- Site [Partial Alerts] --}}
+<div style="display: none;" id="pAlertSuccess">
+    {{> alertProcessScrape }}
+</div>
+
+{{!-- Site [Main Background Image] --}}
+<div class="jumbotron text-center">
+    {{!-- Site [Jumbotron Background] --}}
+    <div class="bg">
+    </div>
+    {{!-- Site [Jumbotron Background Text] --}}
+    <div class="caption">
+        <h1 class="display-1 font-weight-bold">Mongo Scraper</h1>
+        <p id="jumbo-describe" class="lead">New York Times Edition</p>
+    </div>
+</div>
+
+{{!-- Site [Article Scrape Population Conditions] --}}
+<div class="container-fluid">
+    {{!-- Site [If the Articles Array Contains Data] --}}
+    {{#if Article.length}}
+    {{!-- Site [Todays News] --}}
+    <div class="animated fadeInLeft slow col-md-4 alert alert-green text-white" role="alert">
+        <p class="h5 text-center">Today, {{moment format="MMMM D, YYYY."}}</p>
+    </div>
+    {{!-- Site [Loop Through Each Article's Title and Comment] --}}
+    {{#each Article}}
+    {{!-- Site [Article Scrape Results] --}}
+    <div class="animated fadeInUp slow row">
+        <div class="col-lg-12 col-sm-12">
+            <div class="card mb-4">
+                {{!-- Site [Article Title] --}}
+                <div class="card-header primary-color white-text">
+                    <h4 class="card-title pt-2">
+                        <a class="article-link text-white" target="_blank"
+                            href="https://www.nytimes.com/{{this.link}}">{{this.title}}</a>
+                        <a href="#" class="btn btn-success float-right font-weight-bold">
+                            Save Article
+                        </a>
+                    </h4>
+                </div>
+                {{!-- Site [Article Description / Comment] --}}
+                <div class="card-body">
+                    <h4 class="card-title">{{this.comment}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+
+    {{!-- Site [If The Results Array Returns Empty, Show Placeholder] --}}
+    {{else}}
+    {{!-- Site [No Saved Articles] --}}
+    <div class="alert alert-warning text-white" role="alert">
+        <p class="h5 text-center"><b>Uh Oh.</b> Looks like we don't have any saved articles.</p>
+    </div>
+    {{!-- Site [What-Would-You-Like-To-Do?] --}}
+    <div class="row">
+        <div class="col-lg-12 col-sm-12">
+            <div class="card mb-4">
+                {{!-- Site [Article Title] --}}
+                <div class="card-header primary-color white-text text-center pb-2">
+                    <h3>Would You Like to Browse Available Articles?</h3>
+                </div>
+                {{!-- Site [Article Description / Comment] --}}
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <div class="row text-center">
+                            <div class="col-lg-12">
+                                <ul id="linkList" class="mr-5 mt-4">
+                                    <li class="mb-2">
+                                        <a href="/">Browse Articles</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+</div>
+
+{{!-- Site [Footer] --}}
+<footer class="page-footer font-small bg-info pt-4">
+    {{!-- Site [????] --}}
+    <div class="container">
+        {{!-- Yeah, it's empty, but it gives us that color drail we want above the credit text --}}
+    </div>
+
+    {{!-- Site [Credit] --}}
+    <div class="footer-copyright text-center py-3 text-white">
+        A Thing By Shawn 2019. <br>
+        Scraping From: <a href="https://www.nytimes.com/section/todayspaper">www.nytimes.com</a>.
+    </div>
+</footer>

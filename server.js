@@ -22,6 +22,7 @@ var db = require("./models");
 
 // Root Route Router.
 const routeHome = require('./routes/Article');
+const routeSaves = require('./routes/Article');
 
 // Create New instance of 'express'.
 const app = express();
@@ -132,5 +133,17 @@ app.get("/scrapej", function (req, res) {
   });
 });
 
-// Start Our Server on PORT 3000.
+// Route to Saved Articles.
+app.get("/saves", function (req, res) {
+  db.Article.find({}, function (err, response) {
+    // If There Are Errors, Handle Them.
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("saves");
+    }
+  });
+});
+
+// Start Server on PORT 3000.
 app.listen(process.env.PORT || PORT, () => console.log(`Express server listening on port ${process.env.PORT || PORT}!`));
