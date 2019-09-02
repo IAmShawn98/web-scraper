@@ -32,7 +32,7 @@
       {{!-- Site Navbar [View Scrapes As JSON !] Button --}}
       <a href="/scrapej" id="btnViewJSON" type="button"
         class="btn btn-warning btn-md my-2 my-sm-0 ml-3 font-weight-bold">
-        View Scrapes As JSON
+        View Scrapes As JSON!
       </a>
       {{!-- Site Navbar [Clear Articles!] Button --}}
       <a href="/clearAll" type="button" id="btnClear" class="btn btn-danger btn-md my-2 my-sm-0 ml-3 font-weight-bold">
@@ -78,7 +78,7 @@
         {{!-- Site [Article Title] --}}
         <div class="card-header primary-color white-text">
           <h4 class="card-title pt-2">
-            <a class="article-link text-white" target="_blank" href="{{this.link}}">{{this.title}}</a>
+            <a class="article-link text-white" target="_blank" href="https://www.nytimes.com/{{this.link}}">{{this.title}}</a>
             <a href="#" class="btn btn-success float-right font-weight-bold">
               Save Article
             </a>
@@ -138,5 +138,8 @@
   </div>
 
   {{!-- Site [Credit] --}}
-  <div class="footer-copyright text-center py-3 text-white">© A Thing By Shawn 2019 </div>
+  <div class="footer-copyright text-center py-3 text-white">
+    A Thing By Shawn 2019. <br>
+    Scraping From: <a href="https://www.nytimes.com/section/todayspaper">www.nytimes.com</a>.
+  </div>
 </footer>
