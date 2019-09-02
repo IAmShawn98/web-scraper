@@ -24,18 +24,17 @@
       <li class="animated fadeIn slow nav-item">
         <a class="nav-link" href="/saves">Saved Articles</a>
       </li>
+      {{!-- Site Navbar [View Article JSON] --}}
+      <li class="animated fadeIn slow nav-item">
+        <a class="nav-link" href="/scrapej">View Article Json</a>
+      </li>
       {{/if}}
-      {{!-- Site Navbar [Scrape New Articles!] Button --}}
+      {{!-- Site Navbar [Scrape New Articles] --}}
       <a href="/scrape" id="btnScrape" type="button"
         class="animated rubberBand btn btn-info btn-md my-2 my-sm-0 ml-3 font-weight-bold">
         Scrape New Articles!
       </a>
       {{#if Article.length}}
-      {{!-- Site Navbar [View Scrapes As JSON !] Button --}}
-      <a href="/scrapej" id="btnViewJSON" type="button"
-        class="animated rubberBand btn btn-warning btn-md my-2 my-sm-0 ml-3 font-weight-bold">
-        View Scrapes As JSON!
-      </a>
       {{!-- Site Navbar [Clear Articles!] Button --}}
       <a href="/clearAll" type="button" id="btnClear"
         class="animated rubberBand btn btn-danger btn-md my-2 my-sm-0 ml-3 font-weight-bold">
