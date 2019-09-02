@@ -47,6 +47,7 @@ body, html {
 .alert-primary {
   background-color: #2196F3 !important;
 }
+
 .alert-green {
   background-color: #28a745 !important;
 }
@@ -58,6 +59,25 @@ ul {
 }
 
 /* Article Link Style */
+
 .article-link:hover {
   text-decoration: underline;
+}
+
+/* Social Circles: */
+
+/* Social [Github] */
+
+.btn-git {
+  background-color: #333333 !important;
+  color: #ffffff !important;
+  border: 0px !important;
+  border-radius: 100% !important;
+}
+
+.btn-git:hover {
+  background-color: #111111 !important;
+  color: #ffffff !important;
+  border: 0px !important;
+  border-radius: 100% !important;
 }
