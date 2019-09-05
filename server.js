@@ -79,17 +79,25 @@ app.get("/scrape", function (req, res) {
     var $ = cheerio.load(response.data);
 
     // Grab All News Classes.
-    $(".css-l2vidh").each(function () {
+    $(".css-10wtrbd").each(function () {
       // Create An Empty Array For Later Population.
       var result = {};
 
-      // Grab the Text and Href of Every Link, Saved As Properties of the 'result' Object.
+      // Article Scrapes:
+
+      // Scrape Every 'h2' Tag Containing Article Headers.
       result.title = $(this)
-        .children("a")
+        .children("h2")
         .text();
+      // Scrape Every Link Available.
       result.link = $(this)
+        .children("div")
         .children("a")
-        .attr("href");
+        .attr("href")
+      // Scrape Every 'p' Tag Containing Brief Article Descriptions.
+      result.articleDescribe = $(this)
+        .children("p")
+        .text();
 
       // Create New Article Using the 'result' Object Created From Scraping.
       db.Article.create(result)
@@ -144,6 +152,11 @@ app.get("/saves", function (req, res) {
     }
   });
 });
+
+// Route to Save An Article to the '/saves' Route View.
+
+
+
 
 // Start Server on PORT 3000.
 app.listen(process.env.PORT || PORT, () => console.log(`Express server listening on port ${process.env.PORT || PORT}!`));
