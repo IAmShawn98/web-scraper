@@ -30,9 +30,9 @@
             </li>
 
             {{!-- Site Navbar [Clear Articles!] Button --}}
-            <a href="/clearAll" type="button" id="btnClear"
+            <a href="/clearSaves" type="button" id="btnClear"
                 class="animated rubberBand btn btn-danger btn-md my-2 my-sm-0 ml-3 font-weight-bold">
-                Clear Articles!
+                Clear Saved Articles!
             </a>
         </ul>
     </div>
@@ -52,7 +52,7 @@
     <div class="caption">
         <h1 class="display-1 font-weight-bold">Mongo Scraper</h1>
         <p id="jumbo-describe" class="lead">New York Times Edition</p>
-        
+
         <!-- Site [Github Star & Counter] -->
         <a class="github-button" href="https://github.com/IAmShawn98/web-scraper" data-size="large"
             data-show-count="true" aria-label="Star IAmShawn98/web-scraper on GitHub">Star This Project</a>
@@ -78,14 +78,13 @@
                     <h4 class="card-title pt-2">
                         <a class="article-link text-white" target="_blank"
                             href="https://www.nytimes.com/{{this.link}}">{{this.title}}</a>
-                        <a href="#" class="btn btn-success float-right font-weight-bold">
-                            Save Article
-                        </a>
+                        <button class="btn btn-danger float-right">Delete Article</button>
+                        <button class="btn btn-purple float-right">Article Notes</button>
                     </h4>
                 </div>
-                {{!-- Site [Article Description / Comment] --}}
+                {{!-- Site [Article Description] --}}
                 <div class="card-body">
-                    <h4 class="card-title">{{this.comment}}</h4>
+                    <p class="lead card-title">{{this.articleDescribe}}</p>
                 </div>
             </div>
         </div>
@@ -94,9 +93,9 @@
 
     {{!-- Site [If The Results Array Returns Empty, Show Placeholder] --}}
     {{else}}
-    {{!-- Site [No Saved Articles] --}}
+    {{!-- Site [No New Articles] --}}
     <div class="alert alert-warning text-white" role="alert">
-        <p class="h5 text-center"><b>Uh Oh.</b> Looks like we don't have any saved articles.</p>
+        <p class="h5 text-center"><b>Uh Oh.</b> Looks Like We Don't Have Any Saved Articles.</p>
     </div>
     {{!-- Site [What-Would-You-Like-To-Do?] --}}
     <div class="row">

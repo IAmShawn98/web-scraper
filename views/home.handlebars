@@ -81,6 +81,7 @@
   </div>
   {{!-- Site [Loop Through Each Article's Title and Comment] --}}
   {{#each Article}}
+  
   {{!-- Site [Article Scrape Results] --}}
   <div class="animated fadeInUp slow row">
     <div class="col-lg-12 col-sm-12">
@@ -90,9 +91,9 @@
           <h4 class="card-title pt-2">
             <a class="article-link text-white" target="_blank"
               href="https://www.nytimes.com/{{this.link}}">{{this.title}}</a>
-            <a href="#" class="btn btn-success float-right font-weight-bold">
-              Save Article
-            </a>
+            <form class="float-right" action="/{{this.id}}" method="POST">
+              <button class="btn btn-success">Save Article</button>
+            </form>
           </h4>
         </div>
         {{!-- Site [Article Description] --}}
@@ -128,7 +129,7 @@
                     <a href="/scrape">Try Scraping New Articles</a>
                   </li>
                   <li>
-                    <a href="#">Go to Saved Articles</a>
+                    <a href="/saves">Go to Saved Articles</a>
                   </li>
                 </ul>
               </div>

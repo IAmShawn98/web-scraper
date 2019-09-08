@@ -18,6 +18,10 @@ var articleSchema = new Schema({
         type: String,
         required: true
     },
+    isSaved: {
+        type: Boolean,
+        required: true
+    }
 });
 
 // Define and Export This Document As Schema Name 'Article'.
