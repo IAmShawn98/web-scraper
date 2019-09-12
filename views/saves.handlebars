@@ -62,8 +62,8 @@
 {{!-- Site [Article Scrape Population Conditions] --}}
 <div class="container-fluid">
     {{!-- Site [If the Articles Array Contains Data] --}}
-    
-    
+
+
     {{#if Article.length}}
     {{!-- Site [Todays News] --}}
     <div class="animated fadeInLeft slow col-md-4 alert alert-green text-white" role="alert">
@@ -80,7 +80,9 @@
                     <h4 class="card-title pt-2">
                         <a class="article-link text-white" target="_blank"
                             href="https://www.nytimes.com/{{this.link}}">{{this.title}}</a>
-                        <button class="btn btn-danger float-right">Delete Article</button>
+                        <form class="float-right" action="/saves/{{this.id}}" method="POST">
+                            <button class="btn btn-danger float-right">Delete Article</button>
+                        </form>
                         <button class="btn btn-purple float-right">Article Notes</button>
                     </h4>
                 </div>

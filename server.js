@@ -134,6 +134,23 @@ app.get("/clearAll", function (req, res) {
   res.redirect("/");
 });
 
+// Delete Article.
+app.post("/saves/:id", function (req, res) {
+  // Using the Article Model, Delete Any Article Clicked On.
+  db.Article.findOneAndRemove({ "_id": req.params.id })
+    // Execute the above query
+    .exec(function (err) {
+      // Log any errors
+      if (err) {
+        console.log(err);
+      }
+      else {
+        // Redirect Back to the Root Route When Finished.
+        res.redirect("/saves");
+      }
+    });
+});
+
 // Get Article Data As 'Json' Format.
 app.get("/scrapej", function (req, res) {
   db.Article.find({}, function (err, response) {
@@ -144,23 +161,6 @@ app.get("/scrapej", function (req, res) {
       res.json(response);
     }
   });
-});
-
-// Save an article
-app.post("/articles/:id", function (req, res) {
-  // Using the Article Model, update the 'isSaved' state to true.
-  db.Article.findOneAndUpdate({ "_id": req.params.id }, { "isSaved": true })
-    // Execute the above query
-    .exec(function (err, doc) {
-      // Log any errors
-      if (err) {
-        console.log(err);
-      }
-      else {
-        // Or send the document to the browser
-        res.send(doc);
-      }
-    });
 });
 
 // Start Server on PORT 3000.
