@@ -24,12 +24,6 @@ var db = require("./models");
 const routeHome = require('./routes/Article');
 const routeSaves = require('./routes/Saves');
 
-// Controllers:
-
-// Article Scraper.
-require("./controller/ArticleScrape");
-
-
 // Create New instance of 'express'.
 const app = express();
 
@@ -78,6 +72,7 @@ connectionDB.once("open", function () {
 // or fires up the live site for the first time.
 app.get('/', (req, res) => routeHome(req, res));
 
+// Route to Saved Articles.
 app.get('/saves', (req, res) => routeSaves(req, res));
 
 // Route to Scrape Site.
@@ -109,9 +104,6 @@ app.get("/scrape", function (req, res) {
         .children("p")
         .text();
 
-      // Make sure new results are not saved.
-      result.isSaved = false;
-
       // Create New Article Using the 'result' Object Created From Scraping.
       db.Article.create(result)
         .then(function (scrapeDB) {
@@ -142,20 +134,6 @@ app.get("/clearAll", function (req, res) {
   res.redirect("/");
 });
 
-// Clear DB Router.
-app.get("/clearSaves", function (req, res) {
-  db.saveArticle.remove({}, function (err) {
-    if (err) {
-      // If There's An Error, Handle It.
-      console.log(err);
-    } else {
-      console.log("Articles Successfully Removed!");
-    }
-  });
-  // Redirect Back to the Root Route When Finished.
-  res.redirect("/");
-});
-
 // Get Article Data As 'Json' Format.
 app.get("/scrapej", function (req, res) {
   db.Article.find({}, function (err, response) {
@@ -168,27 +146,20 @@ app.get("/scrapej", function (req, res) {
   });
 });
 
-// Route to Saved Articles.
-app.get("/saves", function (req, res) {
-  db.Article.find({}, function (err, response) {
-    // If There Are Errors, Handle Them.
-    if (err) {
-      console.log(err);
-    } else {
-      res.render("saves");
-    }
-  });
-});
-
-// Route to Find Articles By ID.
-app.get("/articles/:isSaved", function (req, res) {
-  db.Article.find({ isSaved: true })
-    .populate("Article")
-    .then(function (dbArticle) {
-      res.json(dbArticle);
-    })
-    .catch(function (err) {
-      res.json(err);
+// Save an article
+app.post("/articles/:id", function (req, res) {
+  // Using the Article Model, update the 'isSaved' state to true.
+  db.Article.findOneAndUpdate({ "_id": req.params.id }, { "isSaved": true })
+    // Execute the above query
+    .exec(function (err, doc) {
+      // Log any errors
+      if (err) {
+        console.log(err);
+      }
+      else {
+        // Or send the document to the browser
+        res.send(doc);
+      }
     });
 });
 
