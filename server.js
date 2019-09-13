@@ -16,7 +16,7 @@ MomentHandler.registerHelpers(Handlebars);
 console.log(moment());
 
 // Require All Models.
-var db = require("./models");
+var db = require('./models');
 
 // Required Routing Paths:
 
@@ -44,7 +44,7 @@ app.set('view engine', 'handlebars');
 app.set('views', __dirname + '/views');
 
 // Log Routing Events [MORGAN Package].
-app.use(logger("dev"));
+app.use(logger('dev'));
 
 // Serve Static Files From the '/public' Folder.
 app.use(express.static(path.resolve(__dirname, 'public')));
@@ -88,8 +88,6 @@ app.get("/scrape", function (req, res) {
       // Create An Empty Array For Later Population.
       var result = {};
 
-      // Article Scrapes:
-
       // Scrape Every 'h2' Tag Containing Article Headers.
       result.title = $(this)
         .children("h2")
@@ -120,7 +118,7 @@ app.get("/scrape", function (req, res) {
   });
 });
 
-// Clear DB Router.
+// Delete All Articles.
 app.get("/clearAll", function (req, res) {
   db.Article.remove({}, function (err) {
     if (err) {
@@ -161,6 +159,23 @@ app.get("/scrapej", function (req, res) {
       res.json(response);
     }
   });
+});
+
+// Save An Article.
+app.post("/articles/:id", function (req, res) {
+  // Using the Article Model, update the 'isSaved' state to true.
+  db.Article.findByIdAndUpdate({ "_id": req.params.id }, { "isSaved": true })
+    // Execute the Update Method Above.
+    .exec(function (err) {
+      // If There Are Errors, Handle Them.
+      if (err) {
+        console.log(err);
+      }
+      else {
+        // Redirect Back to the Root Route When Finished.
+        res.redirect("/");
+      }
+    });
 });
 
 // Start Server on PORT 3000.
