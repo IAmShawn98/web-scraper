@@ -172,8 +172,8 @@ app.post("/articles/:id", function (req, res) {
         console.log(err);
       }
       else {
-        // Redirect Back to the Root Route When Finished.
-        res.redirect("/");
+        // Redirect to the Saves Route When Finished.
+        res.redirect("/saves");
       }
     });
 });

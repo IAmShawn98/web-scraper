@@ -3,7 +3,7 @@ var db = require("../models");
 
 // Render 'db' Articles.
 const routeHome = (req, res) => {
-  db.Article.find()
+  db.Article.find({isSaved: false})
     .then(function (dbArticle) {
       res.render('home', { Article: dbArticle })
     });

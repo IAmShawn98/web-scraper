@@ -3,9 +3,9 @@ var db = require("../models");
 
 // Render 'db' Saves.
 const routeSaves = (req, res) => {
-  db.Article.find()
+  db.Article.find({isSaved: true})
     .then(function (dbArticle) {
-      res.render('saves', { Article: dbArticle })
+      res.render("saves", { Article: dbArticle })
     });
 }
 
