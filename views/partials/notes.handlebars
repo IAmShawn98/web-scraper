@@ -1,0 +1,37 @@
+{{#each Article}}
+<div class="modal fade bottom show" id="notesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    style="display: block; padding-right: 17px;" aria-modal="true">
+    <div class="modal-dialog modal-full-height modal-bottom" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <div class="card-footer bg-secondary border-white text-white font-weight-bold text-center">
+                <h4>Showing Notes For Selected Article</h4>
+            </div>
+            <!--Header-->
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <a class="article-link" target="_blank"
+                        href="https://www.nytimes.com/{{this.link}}">{{this.title}}</a>
+                </h4>
+                <label class="text-muted float-right">Article ID: {{this.id}}</label>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente magnam, sunt, ea dolore eum quod.
+                    Minima fugiat
+                    enim aut soluta est reprehenderit reiciendis quos, qui, amet possimus laborum assumenda voluptate.
+                </p>
+
+            </div>
+            <!--Footer-->
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary waves-effect waves-light" data-dismiss="modal">Hide
+                    Notes</button>
+                <button type="button" class="btn btn-primary waves-effect waves-light" data-dismiss="modal">Post
+                    Note</button>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+{{/each}}

@@ -2,7 +2,7 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
-const helpers = require('./helpers');
+// const helpers = require('./helpers');
 const mongoose = require('mongoose');
 const cheerio = require('cheerio');
 const axios = require('axios');
@@ -35,7 +35,7 @@ const hbs = exphbs.create({
   // Our Partials Directory.
   partialsDir: __dirname + '/views/partials',
   // Our Helper Method.
-  helpers: helpers()
+  // helpers: helpers()
 });
 
 // Use the Handlebars View Engine For Our Application.
