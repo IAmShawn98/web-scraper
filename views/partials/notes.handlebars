@@ -20,9 +20,13 @@
             </div>
             {{!-- Body Container --}}
             <div class="modal-body p-5">
-                {{!-- No Notes Made --}}
+                {{!-- No Notes Fallback --}}
                 <ul class="list-group note-container">
-                    <li class="list-group-item">Nobody's talking about this article, be the first!</li>
+                    <li class="list-group-item">There aren't any notes for this article yet, be the first!</li>
+                </ul>
+                {{!-- Write Note Input --}}
+                <ul class="list-group note-container mt-4">
+                    <textarea class="p-2" placeholder="Add A Note - Share Your Opinion With the Community!" rows="6" cols="40"></textarea>
                 </ul>
             </div>
             <!--Footer-->
