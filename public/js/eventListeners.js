@@ -4,6 +4,6 @@ $("#btnScrape").click(function () {
 });
 
 // Show Article Notes Modal.
-$("#btnNotes").click(function () {
+$(".btnNotes").click(function () {
     $("#articleNotesMod").show();
 });

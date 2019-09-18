@@ -1,7 +1,6 @@
 {{!-- Article Notes Container --}}
-<div class="modal fade bottom show" id="notesModal" tabindex="-1" role="dialog">
+<div class="modal fade bottom" id="notesModal" tabindex="-1" role="dialog">
     {{!-- Render All Model Data  --}}
-    {{#each Article}}
     <div class="modal-dialog modal-full-height modal-bottom" role="document">
         {{!-- Article Notes Content Container --}}
         <div class="modal-content">
@@ -26,20 +25,21 @@
                 </ul>
                 {{!-- Write Note Input --}}
                 <ul class="list-group note-container mt-4">
-                    <textarea class="p-2" placeholder="Add A Note - Share Your Opinion With the Community!" rows="6" cols="40"></textarea>
+                    <textarea class="p-2" placeholder="Add A Note - Share Your Opinions With the Community!" rows="6"
+                        cols="40"></textarea>
                 </ul>
             </div>
-            <!--Footer-->
+            {{!-- Modal Controls --}}
             <div class="modal-footer justify-content-center">
-                <button type="button" class="btn btn-info waves-effect waves-light" data-dismiss="modal">Hide
-                    Notes
+                {{!-- Hide Modal Button --}}
+                <button type="button" class="btn btn-info waves-effect waves-light" data-dismiss="modal">
+                    Hide Notes
                 </button>
-                <button type="button" class="btn btn-primary waves-effect waves-light" data-dismiss="modal">Post
-                    Note
+                {{!-- Post A Note Button --}}
+                <button type="button" class="btn btn-primary waves-effect waves-light" data-dismiss="modal">
+                    Post Note
                 </button>
             </div>
         </div>
-        <!--/.Content-->
     </div>
-    {{/each}}
 </div>

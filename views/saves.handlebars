@@ -82,8 +82,8 @@
                         <form class="float-right" action="/saves/{{this.id}}" method="POST">
                             <button class="btn btn-danger float-right">Delete Article</button>
                         </form>
-                        <button id="btnNotes" data-toggle="modal" data-target="#notesModal"
-                            class="btn btn-purple float-right">Article Notes</button>
+                        <button id="btnNotes-{{this.id}}" data-id="{{this.id}}" data-toggle="modal"
+                            data-target="#notesModal" class="btn btn-purple btnNotes float-right">Article Notes</button>
                     </h4>
                 </div>
                 {{!-- Site [Article Description] --}}
@@ -130,9 +130,11 @@
 </div>
 
 {{!-- Article Notes Menu --}}
-<div style="display: none;" id="articleNotesMod">
+{{#each Article}}
+<div style="display: none;" id="{{this.id}}-modal">
     {{> notes}}
 </div>
+{{/each}}
 
 {{!-- Site [Footer] --}}
 <footer class="page-footer font-small bg-info pt-4">
