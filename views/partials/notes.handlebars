@@ -1,5 +1,7 @@
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 {{!-- Article Notes Container --}}
-<div class="modal fade bottom" id="notesModal" tabindex="-1" role="dialog">
+<div class="modal fade bottom" id="dialog-{{id}}" tabindex="-1" role="dialog">
     {{!-- Render All Model Data  --}}
     <div class="modal-dialog modal-full-height modal-bottom" role="document">
         {{!-- Article Notes Content Container --}}
@@ -11,11 +13,10 @@
             {{!-- Header Container --}}
             <div class="modal-header">
                 <h4 class="modal-title">
-                    <a class="article-link" target="_blank"
-                        href="https://www.nytimes.com/{{this.link}}">{{this.title}}</a>
+                    <a class="article-link" target="_blank" href="https://www.nytimes.com/{{link}}">{{title}}</a>
                 </h4>
                 {{!-- Article ID Number --}}
-                <label class="text-muted float-right">Article ID: {{this.id}}</label>
+                <label class="text-muted float-right">Article ID: {{id}}</label>
             </div>
             {{!-- Body Container --}}
             <div class="modal-body p-5">

@@ -83,7 +83,7 @@
                             <button class="btn btn-danger float-right">Delete Article</button>
                         </form>
                         <button id="btnNotes-{{this.id}}" data-id="{{this.id}}" data-toggle="modal"
-                            data-target="#notesModal" class="btn btn-purple btnNotes float-right">Article Notes</button>
+                            data-target="#dialog-{{this.id}}" class="btn btn-purple btnNotes float-right">Article Notes</button>
                     </h4>
                 </div>
                 {{!-- Site [Article Description] --}}
@@ -134,6 +134,11 @@
 <div style="display: none;" id="{{this.id}}-modal">
     {{> notes}}
 </div>
+<script type="text/javascript">
+    $("#btnNotes-{{this.id}}").click(function () {
+        $("#{{this.id}}-modal").show();
+    });
+</script>
 {{/each}}
 
 {{!-- Site [Footer] --}}
