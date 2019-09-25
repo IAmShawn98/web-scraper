@@ -5,7 +5,7 @@ Welcome to the New York Times Mongo Web Scraper created with Node Exprsss Server
 Users can data mine news articles from the New York Times to read the latest news without having to physically navigate
 to their website. You can also add article notes to your favorite articles, sharing your opinions with the community!
 
-<!-- ![image](https://user-images.githubusercontent.com/47279070/63378568-7cd32580-c360-11e9-8a41-a9a4c92262ff.png) -->
+![image](https://github.com/IAmShawn98/web-scraper/blob/master/public/images/scraper.png?raw=true)
 
 ### Check It Out!
 You can view the project live <a href="#">HERE</a> (NOT YET DEPLOYED).
