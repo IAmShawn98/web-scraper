@@ -178,5 +178,33 @@ app.post("/articles/:id", function (req, res) {
     });
 });
 
+
+// Add Article Notes.
+app.post("/articles/:id", function (req, res) {
+  var content = req.body.comment;
+  articleID = req.params.id;
+
+  var commentObj = {
+    comment: content,
+  }
+
+  var newNote = new Comment(commentObj);
+
+  newNote.save(function (err, article) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(article._id);
+      console.log(articleID);
+    }
+
+    db.Article.findOneAndUpdate(
+      { _id: req.params.id },
+      { $push: { comment: article._id } },
+      { new: true }
+    )
+  });
+});
+
 // Start Server on PORT 3000.
 app.listen(process.env.PORT || PORT, () => console.log(`Express server listening on port ${process.env.PORT || PORT}!`));

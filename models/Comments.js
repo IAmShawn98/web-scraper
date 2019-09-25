@@ -6,14 +6,12 @@ var Schema = mongoose.Schema;
 
 // Define Our Comment Schema.
 var commentSchema = new Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    body: {
-        type: String,
-        required: true
-    }
+    comment: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Comment"
+        }
+    ]
 })
 
 // Define and Export This Document As Schema Name 'Comment'.
