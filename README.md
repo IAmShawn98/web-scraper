@@ -8,7 +8,7 @@ to their website. You can also add article notes to your favorite articles, shar
 ![image](https://github.com/IAmShawn98/web-scraper/blob/master/public/images/scraper.png?raw=true)
 
 ### Check It Out!
-You can view the project live <a href="#">HERE</a> (NOT YET DEPLOYED).
+You can view the project live <a href="https://web-scraper-sl.herokuapp.com/">HERE</a>.
 
 ## How to Scrape Articles
 Simply click on 'SCRAPE NEW ARTICLES!' in the upper left side of the navbar. You might have to wait a few
