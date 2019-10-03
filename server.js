@@ -24,6 +24,8 @@ var db = require('./models');
 const routeHome = require('./routes/Article');
 const routeSaves = require('./routes/Saves');
 
+
+
 // Create New instance of 'express'.
 const app = express();
 
@@ -52,7 +54,9 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 // Specify Our MongoDB Connection Strings:
 
 // Main Scrape Database.
-mongoose.connect("mongodb://localhost/scrapeDB");
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scrapeDB";
+
+mongoose.connect(MONGODB_URI);
 
 // Save the Connection Strings Into An Instance Called 'db' So We Can Verify It.
 var connectionDB = mongoose.connection;
@@ -204,6 +208,10 @@ app.post("/articles/:id", function (req, res) {
       { new: true }
     )
   });
+});
+
+app.post("/comments", function (req, res) {
+  
 });
 
 // Start Server on PORT 3000.

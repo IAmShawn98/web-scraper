@@ -17,30 +17,19 @@
                 </h4>
                 {{!-- Article ID Number --}}
                 <label class="text-muted float-right">Article ID: {{id}}</label>
+                <input type="hidden" id="articleID" value="{{id}}" />
             </div>
             {{!-- Body Container --}}
             <div class="modal-body p-5">
                 {{!-- No Notes Fallback --}}
-                <h5>Comments:</h5>
-                {{#if Article.comment}}
-                {{#each Article.comment}}
-                <div class="card">
-                </div>
+                <h5>Notes For This Article From Our Users:</h5>
                 <ul class="list-group note-container">
-                    <li class="list-group-item">
-                        <p>{{this.body}}<p>
-                    </li>
+                    <li id="noNotes"class="list-group-item">There aren't any notes for this article yet, be the first!</li>
                 </ul>
-                {{/each}}
-                {{else}}
-                <ul class="list-group note-container">
-                    <li class="list-group-item">There aren't any notes for this article yet, be the first!</li>
-                </ul>
-                {{/if}}
                 {{!-- Write Note Input --}}
                 <form action="/articles/{{article._id}}" method="POST" class="card-panel col s8">
                     <ul class="list-group note-container mt-4">
-                        <textarea class="p-2" placeholder="Add A Note - Share Your Opinions With the Community!"
+                        <textarea id="txtNote" class="p-2" placeholder="Add A Note - Share Your Opinions With the Community!"
                             rows="6" cols="40"></textarea>
                     </ul>
             </div>
@@ -51,7 +40,7 @@
                     Hide Notes
                 </button>
                 {{!-- Post A Note Button --}}
-                <button type="submit" class="btn btn-primary waves-effect waves-light" data-dismiss="modal">
+                <button type="submit" id="btnPostNote" class="btn btn-primary waves-effect waves-light" data-dismiss="modal">
                     Post Note
                 </button>
                 </form>
